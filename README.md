@@ -23,4 +23,3 @@
  20. [SpringBoot嵌入式Tomcat的自动配置原理](https://mp.weixin.qq.com/s/XdxQgAYqarGpiSS3n7tp4g)                    
  21. [SpringBoot健康检查实现原理](https://mp.weixin.qq.com/s/SFc2-NZZ3Nv7bX1QRfqQ7g)                             
 
-![1](https://shiyujun.cn/img/gongzhonghao.jpg)
