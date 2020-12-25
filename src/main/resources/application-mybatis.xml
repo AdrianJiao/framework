@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd"
+       default-autowire="byName">
+
+    <!-- 加载属性资源 -->
+    <context:property-placeholder location="classpath:/db.properties"></context:property-placeholder>
+
+    <!-- 配置 SqlSessionFactoryBean  -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- mybatis 配置文件位置（默认配置的话，可以不用）-->
+        <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+        <!-- 配置映射器文件（mybatis-config 中已经配置了） -->
+<!--        <property name="mapperLocations" value="classpath:/mappers/UserMapper.xml" />-->
+    </bean>
+
+    <!-- 配置数据源 -->
+    <!-- 这里使用的是 druid 连接池，需要另外导入 druid.jar -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${mysql.driver}" />
+        <property name="url" value="${mysql.url}" />
+        <property name="username" value="${mysql.username}" />
+        <property name="password" value="${mysql.password}" />
+    </bean>
+
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- SqlSessionTemplate管理mybatis的qlSession,线程安全,可以被多个DAO所共享使用 -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+        <!-- 配置了BATCH 表示所有的语句可以批量操作 -->
+        <constructor-arg index="1" value="BATCH" />
+    </bean>
+
+     <!-- mapper扫描后注入spring容器   -->
+    <mybatis:scan base-package="cn.shiyujun.mybatis" />
+
+    <!--     MapperFactoryBean继承了SqlSessionDaoSupport   -->
+    <bean id="userMapper2" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="cn.shiyujun.mybatis.UserMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+</beans>
