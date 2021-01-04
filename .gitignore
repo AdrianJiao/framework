@@ -7,6 +7,7 @@
 *.class
 *.tmp
 /tomcat.10025
+target/
 
 # Package Files #
 *.jar
