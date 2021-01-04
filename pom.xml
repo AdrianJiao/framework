@@ -6,6 +6,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>stand-alone</module>
+        <module>dubbo</module>
     </modules>
     <groupId>cn.shiyujun</groupId>
     <artifactId>spring-framework</artifactId>
