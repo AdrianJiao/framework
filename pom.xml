@@ -5,10 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>dubbo-provider</module>
-        <module>dubbo-consumer</module>
         <module>stand-alone</module>
-        <module>dubbo-interface</module>
     </modules>
     <groupId>cn.shiyujun</groupId>
     <artifactId>spring-framework</artifactId>
