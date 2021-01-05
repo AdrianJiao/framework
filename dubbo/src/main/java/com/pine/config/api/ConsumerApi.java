@@ -15,7 +15,7 @@ public class ConsumerApi {
     public static void main(String[] args) {
         ReferenceConfig<UserService> reference = new ReferenceConfig<>();
         reference.setApplication(new ApplicationConfig("api-consumer"));
-        reference.setRegistry(new RegistryConfig("zookeeper://47.93.206.149:20181"));
+        reference.setRegistry(new RegistryConfig("zookeeper://127.0.0.1:2181"));
         reference.setInterface(UserService.class);
         UserService orderService = reference.get();
 

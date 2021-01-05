@@ -50,8 +50,8 @@ public class ConsumerAnno {
             // 注册信息
             RegistryConfig registryConfig = new RegistryConfig();
             registryConfig.setProtocol("zookeeper");
-            registryConfig.setAddress("47.93.206.149");
-            registryConfig.setPort(20181);
+            registryConfig.setAddress("127.0.0.1");
+            registryConfig.setPort(2181);
             return registryConfig;
         }
     }

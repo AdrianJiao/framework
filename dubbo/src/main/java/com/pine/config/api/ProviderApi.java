@@ -17,7 +17,7 @@ public class ProviderApi {
     public static void main(String[] args) throws IOException {
         ServiceConfig<UserService> config = new ServiceConfig<>();
         config.setApplication(new ApplicationConfig("api-provider"));
-        config.setRegistry(new RegistryConfig("zookeeper://47.93.206.149:20181"));
+        config.setRegistry(new RegistryConfig("zookeeper://127.0.0.1:2181"));
         config.setInterface(UserService.class);
         config.setRef(new UserServiceImpl());
         config.export();

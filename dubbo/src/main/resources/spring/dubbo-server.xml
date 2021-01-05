@@ -16,7 +16,7 @@
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
     <dubbo:application name="xml-server" />
     <!-- 使用本地zookeeper作为注册中心 -->
-    <dubbo:registry address="zookeeper://47.93.206.149:20181" />
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
 
     <!--name指示使用什么协议监听端口：dubbo/rmi/rest-->
     <dubbo:protocol  name="dubbo" port="20882" />
